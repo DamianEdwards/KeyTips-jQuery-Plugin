@@ -1,0 +1,167 @@
+﻿.foo {}
+/* ------------------------------
+   Forms Layout
+   ------------------------------*/
+
+/* ------------------------------
+   Common Form Layout
+   ------------------------------*/
+
+div.form {
+    font-family: "Lucida Sans";
+    padding: 6px;
+}
+    div.form fieldset {
+        padding-left: 6px;
+        padding-bottom: 6px;
+        border: 1px solid #d5d5d5;
+        margin: 0px 0px 18px 0px;
+    }
+    
+        div.form fieldset legend {
+            margin-bottom: 4px; 
+            color: #444444;  
+            font-size: 0.9em;
+        }
+
+    div.form fieldset ol,
+    div.form fieldset ul {
+        list-style: none;
+        list-style-type: none;
+        list-style-position: outside;
+        margin: 0px;
+        padding: 0px;
+    }
+    
+        div.form fieldset ol li {
+            clear: both;
+        }
+        
+            div.form fieldset ol li label {
+                display: block;
+                width: 120px;
+                float: left;
+                line-height: 20px;
+                margin-right: 6px;
+            }
+            
+                div.form fieldset ol li label em {
+                    font-style: normal;
+                    text-decoration: underline;
+                }
+            
+            div.form fieldset li label.required-field {
+                background: url("req-field-glyph.gif") right 2px no-repeat;
+            }
+            
+                div.form fieldset li label.required-field span {
+                    display: none;
+                }
+            
+            div.form fieldset ul.validation-errors {
+                margin: 0px 0px 0px 128px;
+            }
+            
+                div.form fieldset ul.validation-errors li {
+                    float: left;
+                    clear: right;
+                }
+
+    div.form .validation-error {
+        color: Red;
+        font-size: 0.8em;
+    }
+
+    div.form dl.legend {
+       height: 16px;
+       width: 190px;
+       margin: 6px 0px 0px 132px;
+       padding: 3px 4px;
+       border: 1px dashed silver;
+       font-size: 0.8em;
+    }
+
+        div.form dl.legend dt.required-field {
+            float: left;
+            width: 12px;
+            height: 16px;
+            text-indent: -9999px;
+            background: url("req-field-glyph.gif") left no-repeat;
+        }
+        
+        div.form dl.legend dd {
+            float: left;
+            margin-left: 3px;
+        }
+    
+    div.form fieldset.actions {
+        border: none;
+        margin-top: 12px;
+        margin-left: 132px;
+        padding: 0px;
+    }
+    
+        div.form fieldset.actions ul li {
+            float: left;
+        }
+        
+            div.form fieldset.actions ul li input.button {
+                width: 80px;
+                margin-right: 6px;
+            }
+            
+            div.form fieldset.actions ul li.default input.button {
+                font-weight: bold;
+            }
+
+/* -------------------------------------
+		Customer Form
+   ------------------------------------- */
+div.customer-form {
+    
+}
+
+    div.customer-form li.date-of-birth input.text-box {
+        width: 88px;
+    }
+    
+    div.customer-form li.email input.text-box {
+        width: 250px;
+    }
+    
+    div.customer-form li.street-1 input.text-box,
+    div.customer-form li.street-2 input.text-box,
+    div.customer-form li.city input.text-box {
+        width: 200px;
+    }
+    
+    div.customer-form li.post-code input.text-box {
+        width: 60px;
+    }
+    
+/* -------------------------------------
+		Options Form
+   ------------------------------------- */
+div.options-form {
+	width: 360px;
+}
+	
+	div.options-form fieldset {
+		background-color: #f8f8f8;
+	}
+	
+		div.options-form fieldset ol li label {
+			width: 160px;
+		}
+		
+		div.options-form fieldset ol li.label-popup-offset-x input,
+		div.options-form fieldset ol li.label-popup-offset-y input,
+		div.options-form fieldset ol li.button-popup-offset-x input,
+		div.options-form fieldset ol li.button-popup-offset-y input {
+			width: 40px;
+		}
+	
+		div.options-form fieldset ul.actions {
+			margin-top: 6px;
+			margin-left: 166px;
+		}

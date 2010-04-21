@@ -1,0 +1,166 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>Access Key Highlighter jQuery Plugin Example</title>
+    <link href="style/styles.css" type="text/css" rel="stylesheet" />
+    <link href="style/forms.css" type="text/css" rel="stylesheet" />
+    <link href="style/AccessKeyHighlighter.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <script type="text/javascript">
+    <!--
+        document.write("<div class=\"js\">");
+    -->
+    </script>
+    <div id="pageContainer" class="default">
+        <form method="get" action="./" enctype="application/x-www-form-urlencoded">
+        <div>
+            <h1>Access Key Highlighter jQuery Plugin Example</h1>
+            <p class="sample-description">
+                This page shows an example of using the Access Key Highlighter jQuery plugin with a typical form.
+            </p>
+            <p>
+                Hold down the
+                <span id="shortcutKey">Alt key</span> to see the access keys on this form highlighted.
+            </p>
+            <p>
+                To use the plugin on a page simply:
+            </p>
+            <ol id="instructions">
+                <li>Add a reference to jquery-1.3.2.js
+                    <p class="code-sample">
+                        <code>&lt;script type="text/javascript" src="script/jquery-1.3.2.js"&gt;&lt;/script&gt;</code>
+                    </p>
+                </li>
+                <li>Add a reference to jquery.AccessKeyHighlighter.js
+                    <p class="code-sample">
+                        <code>&lt;script type="text/javascript" src="script/jquery.AccessKeyHighlighter.js"&gt;&lt;/script&gt;</code>
+                    </p>
+                </li>
+                <li>Add a link to AccessKeyHighlighter.css in the head
+                    <p class="code-sample">
+                        <code>&lt;link type="text/css" rel="stylesheet" href="style/AccessKeyHighlighter.css" /&gt;</code>
+                    </p>
+                </li>
+                <li>Copy the popup-back.gif image to the same folder as the AccessKeyHighlighter.css stylesheet</li>
+                <li>Add a call to $.highlightAccessKeys() in your page's onload script
+                    <p class="code-sample">
+                        <code>$(function() { $.highlightAccessKeys(); });</code>
+                    </p>
+                </li>
+            </ol>
+            <div class="form customer-form">
+                <fieldset class="personal-details">
+                    <legend>Personal Details</legend>
+                    <ol>
+                        <li class="first-name">
+                            <label for="firstName" class="required-field" title="This is a required field">First Name:</label>
+                            <input name="FirstName" type="text" maxlength="32" id="firstName" accesskey="F" title="First Name" class="text-box" />
+                        </li>
+                        <li class="last-name">
+                            <label for="lastName">Last Name:</label>
+                            <input name="LastName" type="text" maxlength="32" id="lastName" accesskey="L" title="Last Name" class="text-box" />
+                        </li>
+                        <li class="date-of-birth">
+                            <label for="dateOfBirth">Date of birth:</label>
+                            <input name="DateOfBirth" type="text" maxlength="11" id="dateOfBirth" accesskey="B" title="Date of birth, format dd-MMM-yyyy" class="text-box" />
+                        </li>
+                        <li class="bio">
+                            <label for="bio">Bio:</label>
+                            <textarea name="Bio" rows="4" cols="30" id="bio" accesskey="O" title="Biography" class="text-box"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+                <fieldset class="contact-details">
+                    <legend>Contact Details</legend>
+                    <ol>
+                        <li class="home-phone">
+                            <label for="homePhone">Home phone:</label>
+                            <input name="HomePhone" type="text" maxlength="20" id="homePhone" accesskey="H" title="Home phone" class="text-box" />
+                        </li>
+                        <li class="work-phone">
+                            <label for="workPhone">Work phone:</label>
+                            <input name="WorkPhone" type="text" maxlength="20" id="workPhone" accesskey="W" title="Work phone" class="text-box" />
+                        </li>
+                        <li class="mobile-phone">
+                            <label for="mobilePhone">Mobile phone:</label>
+                            <input name="MobilePhone" type="text" maxlength="20" id="mobilePhone" accesskey="M" title="Mobile phone" class="text-box" />
+                        </li>
+                        <li class="email">
+                            <label for="email" class="required-field" title="This is a required field">E-mail:</label>
+                            <input name="Email" type="text" maxlength="255" id="email" accesskey="E" title="E-mail" class="text-box" />
+                        </li>
+                    </ol>
+                </fieldset>
+                <fieldset class="home-address">
+                    <legend>Home Address</legend>
+                    <ol>
+                        <li class="street-1">
+                            <label for="homeStreet1">Street:</label>
+                            <input name="HomeStreet1" type="text" maxlength="128" id="homeStreet1" accesskey="T" title="Street" class="text-box" />
+                        </li>
+                        <li class="street-2">
+                            <label for="homeStreet2">&nbsp;</label>
+                            <input name="HomeStreet2" type="text" maxlength="128" id="homeStreet2" accesskey="Y" class="text-box" />
+                        </li>
+                        <li class="city">
+                            <label for="homeCity">City:</label>
+                            <input name="HomeCity" type="text" maxlength="128" id="homeCity" accesskey="I" title="City" class="text-box" />
+                        </li>
+                        <li class="state">
+                            <label for="homeState">State:</label>
+                            <select name="HomeState" id="homeState" title="State">
+	                            <option value="" title="Please select a state">- select -</option>
+	                            <option value="ACT" title="Australian Capital Territory">ACT</option>
+	                            <option value="NSW" title="New South Wales">NSW</option>
+	                            <option value="NT" title="Northern Territory">NT</option>
+	                            <option value="QLD" title="Queensland">QLD</option>
+	                            <option value="SA" title="South Australia">SA</option>
+	                            <option value="TAS" title="Tasmania">TAS</option>
+	                            <option value="VIC" title="Victoria">VIC</option>
+	                            <option value="WA" title="Western Australia">WA</option>
+                            </select>
+                        </li>
+                        <li class="post-code">
+                            <label for="homePostCode">Post code:</label>
+                            <input name="HomePostCode" type="text" maxlength="6" id="homePostCode" accesskey="P" title="Post code" class="text-box" />
+                        </li>
+                    </ol>
+                </fieldset>
+                <dl class="legend">
+                    <dt class="required-field" title="This is a required field">This is a required field</dt>
+                    <dd>indicates a required field</dd>
+                </dl>
+                <fieldset class="actions">
+                    <ul>
+                        <li class="default save">
+                            <input type="submit" name="Save" value="Save" id="save" accesskey="S" title="Save" class="button" />
+                        </li>
+                        <li class="cancel">
+                            <input type="submit" name="Cancel" value="Cancel" id="cancel" accesskey="C" title="Cancel" class="button" />
+                        </li>
+                        </ul>
+                    </fieldset>
+                </div>
+            </div>
+        </form>
+        <div id="pageFooter">
+            <ul>
+                <li><a accesskey="1" href="http://jquery.com">jquery</a></li>
+                <li><a accesskey="2" title="Valid XHTML 1.1" href="http://validator.w3.org/check?uri=referer">xhtml</a></li>
+                <li><a accesskey="3" title="Test this page for accessibility" href="http://wave.webaim.org/report?view=icons&amp;url=http%3A%2F%2Ffiles.damianedwards.com%2FAccessKeyHighlighter%2FjQuery">wave</a></li>
+                <li><a accesskey="4" title="Author" href="http://damianedwards.wordpress.com">damian.edwards</a></li>
+            </ul>
+        </div>    
+    </div>
+    <script type="text/javascript">
+    <!--
+        document.write("</div>");
+    -->
+    </script>
+    <script src="script/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../src/jquery.AccessKeyHighlighter.js" type="text/javascript"></script>
+    <script src="script/page.js" type="text/javascript"></script>
+</body>
+</html>

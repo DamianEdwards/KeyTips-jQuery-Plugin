@@ -1,0 +1,132 @@
+﻿/* -------------------------------
+		Root & Common Styles
+   ------------------------------- */
+body {
+	font-family: "Lucida Sans", Tahoma, Arial, Sans-Serif;
+	font-size: 0.8em;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+img {
+    border: 0px;
+}
+
+a {
+    color: Blue;
+    text-decoration: none;
+}
+    a:hover {
+        text-decoration: underline;
+    }
+
+h1 {
+	font-size: 1.5em;
+	padding: 4em 0px 0.3em 0.3em;
+	margin-bottom: 0.5em;
+	font-family: Cambria;
+	color: White;
+	font-weight: normal;
+	font-style: italic;
+	border-bottom: 2px solid #CCCCCC;
+	background: #1B146B;
+}
+
+* html h1 {
+	height: 1%; /* Forces hasLayout in IE so that heading is always rendered */
+}
+
+*:first-child+html h1 {
+	height: 1%; /* Forces hasLayout in IE so that heading is always rendered */
+}
+
+p {
+    margin: 0 0.3em 1.0em 0.3em;
+    line-height: 1.3em;
+}
+
+ol {
+	margin: .5em 0 1em 1.8em;
+}
+
+div.clear {
+    clear: both;
+}
+
+input.text-box {
+    font-family: Tahoma;
+    font-size: 1.0em;
+    padding-left: 2px;
+    border: 1px solid #efefef;
+    border-top: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+}
+    input.text-box:hover,
+    input.text-box:focus {
+        border: 1px solid #ffcc00;
+        border-top: 1px solid #ff9900;
+        border-left: 1px solid #ff9900;
+    }
+
+p.code-sample {
+	margin: 8px 0;
+	padding: 0 4px 2px;
+	background: #eee;
+	border: dashed 1px #555;
+	font-size: 14px;
+}
+
+.js p.code-sample {
+	display: none;
+}
+
+a.show-link {
+	
+}
+
+a.show-link:hover {
+	color: Blue;
+}
+
+#instructions li {
+	margin: 0 0 0.4em;
+}
+
+/* -------------------------------
+		Page Layout Styles
+   ------------------------------- */
+div#pageContainer {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+	div#pageContainer.default {
+		
+	}
+	
+	div#pageContainer div#pageFooter {
+		text-align: center;
+		padding: 0 0 20px;
+	}
+	
+		div#pageContainer div#pageFooter ul {
+			display: inline-block;
+			margin: 0; padding: 0;
+			list-style-type: none;
+		}
+		/* IE6+7 Only */
+		*:first-child+html div#pageContainer div#pageFooter ul {
+			display: inline;
+		}
+		* html div#pageContainer div#pageFooter ul {
+			display: inline;
+		}
+			
+			div#pageContainer div#pageFooter ul li {
+				float: left;
+				margin-right: 8px;
+			}
