@@ -1,5 +1,5 @@
-﻿/// <reference path="jquery-1.3.2.js" />
-/* jQuery Access Key Highlighter Plugin 1.0.1 - http://damianedwards.com */
+﻿/// <reference path="..\sample\script\jquery-1.4.2.js" />
+/* jQuery KeyTips Plugin 1.0.2 - http://damianedwards.com */
 (function($) {
     jQuery.extend({
         trace: function(msg, isDebug) {
