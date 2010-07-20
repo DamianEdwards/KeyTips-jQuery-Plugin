@@ -1,6 +1,7 @@
 ﻿/// <reference path="jquery-1.3.2.js" />
-/// <reference path="jquery.AccessKeyHighlighter.js" />
+/// <reference path="..\..\src\jquery.KeyTips.js" />
 $(function() {
+    
     var userAgent = navigator.userAgent;
     // Set access key shortcut text
     $("#shortcutKey").text(
@@ -19,6 +20,6 @@ $(function() {
         return false;
     });
     
-    // Highlight access keys
-    $.highlightAccessKeys({ debug: true });
+    // Show KeyTips
+    $.keyTips({ debug: true });
 });

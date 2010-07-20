@@ -17,7 +17,7 @@
                 window.debugService.trace(msg);
             }
         },
-        highlightAccessKeys: function(options) {
+        keyTips: function(options) {
             // ready
             $(function() {
                 var requiresHighlighting, requiresShiftAlt, accessKeysHighlighted,
