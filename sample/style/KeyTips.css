@@ -1,9 +1,9 @@
-﻿.akh__highlighted {
+﻿.KeyTips__highlighted {
     color: Navy;
     background-color: #fdda8d;
 }
 
-.akh__popup {
+.KeyTips__popup {
 	position: absolute;
 	width: 16px;
 	height: 17px;
@@ -20,5 +20,5 @@
 	opacity: 0.8;
 }
 
-* html .akh__popup { filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80); }
-*:first-child+html .akh__popup { filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80); }
+* html .KeyTips__popup { filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80); }
+*:first-child+html .KeyTips__popup { filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80); }

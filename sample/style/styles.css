@@ -56,6 +56,14 @@ div.clear {
     clear: both;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
+.no-display {
+    display: none;
+}
+
 input.text-box {
     font-family: Tahoma;
     font-size: 1.0em;
@@ -65,7 +73,9 @@ input.text-box {
     border-left: 1px solid #d5d5d5;
 }
     input.text-box:hover,
-    input.text-box:focus {
+    input.text-box:focus,
+    textarea:hover,
+    textarea:focus {
         border: 1px solid #ffcc00;
         border-top: 1px solid #ff9900;
         border-left: 1px solid #ff9900;

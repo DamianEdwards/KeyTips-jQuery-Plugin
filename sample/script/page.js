@@ -1,4 +1,4 @@
-﻿/// <reference path="jquery-1.4.2.js" />
+﻿/// <reference path="jquery-1.4.4.js" />
 /// <reference path="..\..\src\jquery.KeyTips.js" />
 $(function() {
     
