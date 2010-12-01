@@ -66,7 +66,22 @@
 
                 // functions
                 var escapeId = function (id) {
-                    return id.replace(/(:|\.)/g, '\\$1');
+                    var result = id.replace(/(:|\.)/g, '\\$1');
+                    if (result === "#")
+                        result = "";
+                    return result;
+                },
+
+                getFieldAccessKey = function (label) {
+                    var relatedFieldId = escapeId("#" + $(label).attr("htmlFor")),
+
+                        accessKey = $.trim(
+                            relatedFieldId !== ""
+                            ? $(relatedFieldId + "[accesskey]").attr("accesskey") || $(label).attr("accesskey")
+                            : $(label).attr("accesskey")
+                        );
+
+                    return accessKey;
                 },
 
                 getOffset = function (element) {
@@ -86,7 +101,7 @@
 
                 getPopupLocation = function (element) {
                     var $el = $(element);
-                    
+
                     if ($el.is(":hidden") || $el.css("visibility") === "hidden")
                         return false;
 
@@ -105,13 +120,13 @@
                     if (!popupLocation) return;
 
                     // Create popup element, set its location and classs and add to the global array
-                    var popup = $(document.createElement("div"))
-                            .text(accessKey)
-                            .css("left", popupLocation.left)
-                            .css("top", popupLocation.top)
-                            .addClass(settings.popupClass)
-                            .appendTo("body")
-                            .get(0);
+                    var popup = $("<div/>")
+                        .text(accessKey)
+                        .css("left", popupLocation.left)
+                        .css("top", popupLocation.top)
+                        .addClass(settings.popupClass)
+                        .appendTo("body")
+                        .get(0);
 
                     accessKeyPopups.push(popup);
                     accessKeyPopupFields.push(field);
@@ -126,16 +141,10 @@
                 },
 
                 insertAccessKeyTags = function () {
-                    /// <summary>Find access key text and surround with a tag</summary>
+                    /// <summary>Find access key text in all labels and surround with a tag</summary>
                     $("label[for], label[accesskey]").each(function () {
                         // Get accesskey from corresponding form field, otherwise from the label
-                        // BUG: Need to allow for when for is empty
-                        var relatedFieldId = escapeId("#" + $(this).attr("htmlFor")),
-                            accessKey = $.trim(relatedFieldId !== "#" ? $(relatedFieldId).attr("accesskey") : "");
-                        if (typeof (accessKey) === "undefined" || accessKey === "") {
-                            // Get accesskey from label
-                            accessKey = $(this).attr("accesskey");
-                        }
+                        var accessKey = getFieldAccessKey(this);
                         if (typeof (accessKey) === "undefined" || accessKey === "") return true;
                         var labelHtml = $(this).html(),
                             accessKeyIndex = labelHtml.toUpperCase().indexOf(accessKey.toUpperCase());
@@ -160,10 +169,9 @@
                         $("label > " + settings.accessKeyTag).each(function () {
                             var text = $(this).text(),
                                 label = $(this).parent(),
-                                formField = $(escapeId("#" + label.attr("htmlFor"))),
-                                accessKey = (formField.attr("accessKey") || "") !== ""
-                                    ? formField.attr("accessKey")
-                                    : label.attr("accessKey");
+                                relatedFieldId = escapeId("#" + label.attr("htmlFor")),
+                                formField = relatedFieldId !== "#" ? $(relatedFieldId) : null,
+                                accessKey = getFieldAccessKey(label);
 
                             if (accessKey && text.toUpperCase() == accessKey.toUpperCase()) {
                                 createPopup(label[0], accessKey);
@@ -180,7 +188,7 @@
                 },
 
                 refreshPopups = function () {
-                    /// <summary>Clears and the re-creates access key popups for the form</summary>
+                    /// <summary>Clears and then re-creates access key popups for the form</summary>
                     clearPopups();
                     createPopups();
                 },
@@ -191,7 +199,8 @@
                         // Popups
                         var i = 0;
                         $.each(accessKeyPopups, function () {
-                            var field = accessKeyPopupFields[i]; i++;
+                            var field = accessKeyPopupFields[i];
+                            i++;
                             var popupLocation = getPopupLocation(field);
                             $(this).css("left", popupLocation.left)
                                    .css("top", popupLocation.top)
@@ -200,15 +209,17 @@
                     } else if (settings.highlightMode === "toggleClass") {
                         // Toggle label class
                         $("label > " + settings.accessKeyTag).each(function () {
-                            var text = $(this).text();
-                            var label = $(this).parent();
-                            var formField = $(escapeId("#" + label.attr("htmlFor")));
-                            var accessKey = formField.attr("accessKey") !== "" ? formField.attr("accessKey") : label.attr("accessKey");
-                            if (text.toUpperCase() === accessKey.toUpperCase()) {
+                            var text = $(this).text(),
+                                label = $(this).parent(),
+                                relatedFieldId = escapeId("#" + label.attr("htmlFor")),
+                                accessKey = getFieldAccessKey(label);
+
+                            if (!accessKey || text.toUpperCase() === accessKey.toUpperCase()) {
                                 $(this).toggleClass(settings.highlightClass, highlight);
                             }
                         });
                     }
+                    accessKeysHighlighted = highlight;
                 },
 
                 highlightAccessKeys = function () {
@@ -222,7 +233,7 @@
                 // bind handlers
                 $(document)
                     .bind("keydown.keytips", function (e) {
-                        $.trace("AccessKeyHighlighter document.keyDown: keyCode=" + e.keyCode +
+                        $.trace("KeyTips document.keyDown: keyCode=" + e.keyCode +
                                 ", altKey=" + e.altKey +
                                 ", shiftKey=" + e.shiftKey, settings.debug);
                         if (!accessKeysHighlighted && (
@@ -231,17 +242,17 @@
                                 (e.keyCode == 18 && e.shiftKey && requiresShiftAlt))) {
                             // Highlight all the access keys
                             highlightAccessKeys();
-                            accessKeysHighlighted = true;
+                            //accessKeysHighlighted = true;
                         }
                     })
                     .bind("keyup.keytips", function (e) {
-                        $.trace("AccessKeyHighlighter document.keyUp: keyCode=" + e.keyCode +
+                        $.trace("KeyTips document.keyUp: keyCode=" + e.keyCode +
                                 ", altKey=" + e.altKey +
                                 ", shiftKey=" + e.shiftKey, settings.debug);
                         // Un-highlight access keys
                         if (accessKeysHighlighted) {
                             unhighlightAccessKeys();
-                            accessKeysHighlighted = false;
+                            //accessKeysHighlighted = false;
                         }
                     });
 
@@ -251,7 +262,7 @@
                         // Hide the popups
                         if (accessKeysHighlighted && settings.highlightMode == "popup") {
                             unhighlightAccessKeys();
-                            accessKeysHighlighted = false;
+                            //accessKeysHighlighted = false;
                         }
                     })
                     .bind("blur.keytips", function (e) {
@@ -259,7 +270,7 @@
                         // Un-highlight access keys
                         if (accessKeysHighlighted) {
                             unhighlightAccessKeys();
-                            accessKeysHighlighted = false;
+                            //accessKeysHighlighted = false;
                         }
                     })
                     .bind("focus.keytips", function (e) {
@@ -267,7 +278,7 @@
                         // Un-highlight access keys
                         if (accessKeysHighlighted) {
                             unhighlightAccessKeys();
-                            accessKeysHighlighted = false;
+                            //accessKeysHighlighted = false;
                         }
                     });
 

@@ -139,6 +139,21 @@ div.customer-form {
         width: 60px;
     }
     
+    div.customer-form li.field-in-label label {
+        float: none;
+        position: relative;
+    }
+    
+        div.customer-form li.field-in-label label input.text-box {
+            position: absolute;
+            left: 126px;
+        }
+    
+    div.customer-form li p.info {
+        color: #666;
+        margin-top: 10px;
+    }
+    
 /* -------------------------------------
 		Options Form
    ------------------------------------- */

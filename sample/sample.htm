@@ -121,6 +121,21 @@
                             <label for="home.PostCode">Post code:</label>
                             <input name="HomePostCode" type="text" maxlength="6" id="home.PostCode" accesskey="P" title="Post code" class="text-box" />
                         </li>
+                    </ol>
+                </fieldset>
+                <fieldset>
+                    <legend>Test Fields</legend>
+                    <ol>
+                        <li class="field-in-label">
+                            <label accesskey="N">Field in Label:
+                                <input type="text" title="This field is inside the label tag" class="text-box" />
+                            </label>
+                        </li>
+                        <li class="accesskey-on-field">
+                            <label for="testAccessKeyOnField">Access key on field:</label>
+                            <input accesskey="K" type="text" id="testAccessKeyOnField" title="This field has the access key defined directly on it instead of on the label" class="text-box" />
+                            <p class="info">There two hidden fields following this who's access keys should not be displayed</p>
+                        </li>
                         <li class="hidden">
                             <label for="testHiddenField">Test hidden field:</label>
                             <input type="text" id="testHiddenField" accesskey="G" title="This field shouldn't have a key tip shown" class="text-box" />
