@@ -1,4 +1,4 @@
-﻿/// <reference path="jquery-1.4.4.js" />
+/// <reference path="jquery-1.4.4.js" />
 /// <reference path="..\..\src\jquery.KeyTips.js" />
 $(function() {
     var userAgent = navigator.userAgent;
@@ -13,7 +13,7 @@ $(function() {
     $("a.show-link").click(function(e) {
         var el = $(this);
         el.next().toggle("fast", function() {
-            el.text(el.text() == "show example" ? "hide example" : "show example")
+            el.text(el.text() == "show example" ? "hide example" : "show example");
         });
         e.preventDefault();
         return false;
