@@ -5,15 +5,16 @@
     <title>KeyTips jQuery Plugin Example</title>
     <link href="style/styles.css" rel="stylesheet" />
     <link href="style/forms.css" rel="stylesheet" />
-    <link href="style/KeyTips.css" rel="stylesheet" />
+    <link href="../src/styles/KeyTips.css" rel="stylesheet" />
 </head>
-<body class="no-js"><script>document.getElementsByTagName("body")[0].className='js';</script>
+<body class="no-js">
+    <script>document.getElementsByTagName("body")[0].className='js';</script>
     <div id="pageContainer" class="default">
         <form method="get" action="sample.htm" enctype="application/x-www-form-urlencoded">
         <div>
             <h1>KeyTips jQuery Plugin Example</h1>
             <p class="sample-description">
-                This page shows an example of using the <a href="http://plugins.jquery.com/project/KeyTips">KeyTips jQuery plugin</a> with a typical form.
+                This page shows an example of using the <a href="https://github.com/DamianEdwards/KeyTips-jQuery-Plugin">KeyTips jQuery plugin</a> with a typical form.
             </p>
             <p>
                 Hold down the
@@ -23,9 +24,9 @@
                 To use the plugin on a page simply:
             </p>
             <ol id="instructions">
-                <li>Add a reference to jquery-1.4.4.js
+                <li>Add a reference to jquery
                     <p class="code-sample">
-                        <code>&lt;script type="text/javascript" src="script/jquery-1.4.4.js"&gt;&lt;/script&gt;</code>
+                        <code>&lt;script type="text/javascript" src="script/jquery-1.7.1.js"&gt;&lt;/script&gt;</code>
                     </p>
                 </li>
                 <li>Add a reference to jquery.KeyTips.js
@@ -39,9 +40,9 @@
                     </p>
                 </li>
                 <li>Copy the popup-back.gif image to the same folder as the KeyTips.css stylesheet</li>
-                <li>Add a call to $.keyTips() in your page's onload script
+                <li>Add a call to $('selector').keyTips() in your page's onload script
                     <p class="code-sample">
-                        <code>$(function() { $.keyTips(); });</code>
+                        <code>$(function() { $('#myForm').keyTips(); });</code>
                     </p>
                 </li>
             </ol>
@@ -151,6 +152,7 @@
                     <dd>indicates a required field</dd>
                 </dl>
                 <fieldset class="actions">
+                    <legend></legend>
                     <ul>
                         <li class="default save">
                             <input type="submit" name="Save" value="Save" id="save" accesskey="S" title="Save" class="button" />
@@ -172,7 +174,7 @@
             </ul>
         </div>    
     </div>
-    <script src="script/jquery-1.4.4.js"></script>
+    <script src="script/jquery-1.7.1.js"></script>
     <script src="../src/jquery.KeyTips.js"></script>
     <script src="script/page.js"></script>
 </body>

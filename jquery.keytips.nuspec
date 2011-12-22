@@ -15,6 +15,7 @@
     </dependencies>
   </metadata>
   <files>
-	    <file src="src\*.js" target="content\scripts" />
-	</files>
+     <file src="src\*.js" target="content\Scripts" />
+	 <file src="src\styles\*.*" target="content\Content" />
+  </files>
 </package>

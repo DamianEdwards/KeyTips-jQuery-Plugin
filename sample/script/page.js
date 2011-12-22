@@ -1,6 +1,6 @@
-/// <reference path="jquery-1.4.4.js" />
+/// <reference path="jquery-1.7.1.js" />
 /// <reference path="..\..\src\jquery.KeyTips.js" />
-$(function() {
+$(function () {
     var userAgent = navigator.userAgent;
     // Set access key shortcut text
     $("#shortcutKey").text(
@@ -10,17 +10,18 @@ $(function() {
     // Wire-up code samples
     $("p.code-sample").before("<a class=\"show-link\" href=\"#\" title=\"Show the code example\">show example</a>");
     
-    $("a.show-link").click(function(e) {
+    $("a.show-link").click(function (e) {
         var el = $(this);
-        el.next().toggle("fast", function() {
+        el.next().toggle("fast", function () {
             el.text(el.text() == "show example" ? "hide example" : "show example");
         });
         e.preventDefault();
         return false;
     });
-    
+
     // Show KeyTips
-    $.keyTips({ debug: true
+    $("#pageContainer").keyTips({
+        debug: false
         //, highlightMode: "toggleClass"
     });
 });
