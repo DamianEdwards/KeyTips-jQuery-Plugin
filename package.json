@@ -1,0 +1,40 @@
+{
+    "name": "KeyTips",
+    "version": "1.0.5",
+    "title": "jQuery KeyTips",
+    "author": {
+        "name": "Damian Edwards",
+        "url": "http://damianedwards.com"
+    },
+    "licenses": [
+        {
+            "type": "Ms-PL",
+            "url": "http://www.opensource.org/licenses/MS-PL"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.6.1"
+    },
+    "description": "The KeyTips plugin for jQuery provides various options for highlighting access keys on web forms when the user presses their browser's access key shortcut key, e.g. Alt in Internet Explorer, Chrome and Safari, Shift+Alt in Firefox.",
+    "keywords": [
+        "accesskey",
+        "form",
+        "shortcut",
+        "accessibility"
+    ],
+    "homepage": "https://github.com/DamianEdwards/KeyTips-jQuery-Plugin",
+    "contributors": [
+        {
+            "name": "Damian Edwards",
+			"email": "damian@damianedwards.com",
+            "url": "https://github.com/DamianEdwards"
+        }
+    ],
+    "files": [
+        "src/jquery.KeyTips.js",
+		"src/jquery.KeyTips.min.js",
+		"src/styles/KeyTips.css",
+		"src/styles/KeyTips.min.css",
+		"src/styles/popup-back.gif"
+    ]
+}
