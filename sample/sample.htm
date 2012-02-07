@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,6 +19,9 @@
             <p>
                 Hold down the
                 <span id="shortcutKey">Alt key</span> to see the access keys on this form highlighted.
+            </p>
+            <p>
+                Get the KeyTips plugin via NuGet (<a href="http://nuget.org/packages/jquery.KeyTips/">http://nuget.org/packages/jquery.KeyTips/</a>)
             </p>
             <p>
                 To use the plugin on a page simply:
@@ -135,7 +138,7 @@
                         <li class="accesskey-on-field">
                             <label for="testAccessKeyOnField">Access key on field:</label>
                             <input accesskey="K" type="text" id="testAccessKeyOnField" title="This field has the access key defined directly on it instead of on the label" class="text-box" />
-                            <p class="info">There two hidden fields following this who's access keys should not be displayed</p>
+                            <p class="info">There are two hidden fields following this who's access keys should not be displayed</p>
                         </li>
                         <li class="hidden">
                             <label for="testHiddenField">Test hidden field:</label>
@@ -160,8 +163,11 @@
                         <li class="cancel">
                             <input type="submit" name="Cancel" value="Cancel" id="cancel" accesskey="C" title="Cancel" class="button" />
                         </li>
-                        </ul>
-                    </fieldset>
+                        <li class="other">
+                            <button accesskey="Z" class="button">A &lt;button&gt;</button>
+                        </li>
+                    </ul>
+                </fieldset>
                 </div>
             </div>
         </form>

@@ -1,5 +1,5 @@
-﻿/*!
-* jQuery KeyTips Plugin 1.0.5
+/*!
+* jQuery KeyTips Plugin 1.0.6
 * Copyright 2011, Damian Edwards http://damianedwards.com
 * Licensed under Ms-PL
 * http://www.opensource.org/licenses/MS-PL
@@ -153,7 +153,7 @@
         /// <summary>Creates popups for access keys on the form</summary>
         var accessKeyPopupFormFields;
 
-        if (settings.highlightMode == "popup") {
+        if (settings.highlightMode === "popup") {
             clearPopups(els);
             accessKeyPopupFormFields = [];
 
@@ -172,7 +172,7 @@
             });
 
             // Create popups for anchors and form fields
-            els.find("a[href][accesskey], textarea[accesskey], input[accesskey]").each(function () {
+            els.find("a[href][accesskey], textarea[accesskey], input[accesskey], button[accesskey]").each(function () {
                 if ($.inArray(this, accessKeyPopupFormFields) === -1) {
                     createPopup(this, this.accessKey, settings);
                 }
