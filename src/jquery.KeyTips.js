@@ -66,9 +66,19 @@
     }
 
     function getPopupLocation(element, settings) {
-        var $el = $(element),
+        var $el,
             popupLocation,
             offset;
+
+        if (settings.pushPopupToLabel) {
+            $el = $(settings.startLabelTag + "." + settings.startLabelClass, element);
+        } else {
+            $el = $(element);
+        }
+        // if we haven't found the startLabelClass for some reason put the popup next to the element
+        if ($el.length === 0) {
+            $el = $(element);
+        }
 
         if ($el.is(":hidden") || $el.css("visibility") === "hidden") {
             return false;
@@ -114,8 +124,8 @@
         keyTipPopupFields = [];
     }
 
-    function insertAccessKeyTags(els, tag) {
-        /// <summary>Find access key text in all labels and surround with a tag</summary>
+    function insertAccessKeyTags(els, settings) {
+        /// <summary>Find access key text in all labels and surround with a settings.accessKeyTag</summary>
         els.find("label[for], label[accesskey]").each(function () {
             // Get accesskey from corresponding form field, otherwise from the label
             var accessKey = getFieldAccessKey(this),
@@ -138,12 +148,24 @@
             }
 
             // <tagName>accessKeyFromLabel</tagName>
-            accessKeyMarkup = "<" + tag + ">" + labelHtml.substr(accessKeyIndex, 1) + "</" + tag + ">";
+            accessKeyMarkup = "<" + settings.accessKeyTag + ">" + labelHtml.substr(accessKeyIndex, 1) + "</" + settings.accessKeyTag + ">";
+
+            // When we need to push the popup to the left of the label, put the first character from labelHtml within the startLabelTag
+            if (settings.pushPopupToLabel && accessKeyIndex === 0) {
+                accessKeyMarkup = "<" + settings.accessKeyTag + "><" + settings.startLabelTag + " class='" + settings.startLabelClass + "'>" + labelHtml.substr(accessKeyIndex, 1) + "</" + settings.startLabelTag + "></" + settings.accessKeyTag + ">";
+            }
+
             newLabelHtmlLeft = labelHtml.substring(0, accessKeyIndex);
             newLabelHtmlRight = labelHtml.substr(accessKeyIndex + 1);
             newLabelHtml = newLabelHtmlLeft + accessKeyMarkup + newLabelHtmlRight;
 
             if (labelHtml.indexOf(accessKeyMarkup) < 0) {
+
+                // When we need to push the popup to the left of the label, put the first character from labelHtml within the startLabelTag
+                if (settings.pushPopupToLabel && accessKeyIndex > 0) {
+                    newLabelHtml = "<" + settings.startLabelTag + " class='" + settings.startLabelClass + "'>" + newLabelHtml.substr(0, 1) + "</" + settings.startLabelTag + ">" + newLabelHtml.substr(1);
+                }
+
                 $(this).html(newLabelHtml);
             }
         });
@@ -249,6 +271,9 @@
             debug: false,
             highlightClass: "KeyTips__highlighted",
             popupClass: "KeyTips__popup",
+            startLabelClass: "KeyTips__startLabel",
+            startLabelTag: "span",
+            pushPopupToLabel: false,
             highlightMode: "popup", // alternative is "toggleClass"
             accessKeyTag: "em", // could be any inline tag, e.g. em, strong, span
             offsets: {
@@ -283,9 +308,9 @@
                         ", shiftKey=" + e.shiftKey, settings.debug);
 
                 if (!keyTipsShowing && (
-                        (e.keyCode == 18 && !requiresShiftAlt) ||
-                        (e.keyCode == 16 && e.altKey && requiresShiftAlt) ||
-                        (e.keyCode == 18 && e.shiftKey && requiresShiftAlt))) {
+                        (e.keyCode === 18 && !requiresShiftAlt) ||
+                        (e.keyCode === 16 && e.altKey && requiresShiftAlt) ||
+                        (e.keyCode === 18 && e.shiftKey && requiresShiftAlt))) {
                     // Highlight all the access keys
                     showKeyTips(els, settings);
                 }
@@ -305,7 +330,7 @@
             .bind("resize.keytips", function (e) {
                 trace("resize event", settings.debug);
                 // Hide the popups
-                if (keyTipsShowing && settings.highlightMode == "popup") {
+                if (keyTipsShowing && settings.highlightMode === "popup") {
                     hideKeyTips(els, settings);
                 }
             })
@@ -325,7 +350,7 @@
             });
 
         // Create the access key popups
-        insertAccessKeyTags(els, settings.accessKeyTag);
+        insertAccessKeyTags(els, settings);
         createPopups(els, settings);
 
         // unload
